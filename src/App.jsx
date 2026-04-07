@@ -80,9 +80,9 @@ export default function App() {
   };
 
   return (
-    <div className={`h-screen w-full flex items-center justify-center p-4 relative overflow-hidden font-serif ${darkMode ? 'bg-[#121212]' : 'bg-[#e5e5e5]'}`}>
-      <div className="flex flex-col  md:flex-row gap-8 z-20 relative w-full max-w-[1300px] items-center justify-center transform scale-[0.65]">
-        <div className={`p-4 rounded-xl flex md:flex-col items-center gap-6 backdrop-blur-md shadow-2xl border ${darkMode ? 'bg-[#221e1a]/80 border-white/10' : 'bg-[#faf6f0]/80 border-black/10'}`}>
+    <div className={`min-h-screen w-full flex items-center justify-center p-2 relative overflow-x-hidden font-serif ${darkMode ? 'bg-[#121212]' : 'bg-[#e5e5e5]'}`}>
+      <div className="flex flex-col md:flex-row gap-6 md:gap-8 z-20 relative w-full max-w-7xl items-center justify-center transform scale-[0.85] md:scale-[0.65]">
+        <div className={`p-4 rounded-xl flex flex-row md:flex-col items-center gap-4 md:gap-6 backdrop-blur-md shadow-2xl border ${darkMode ? 'bg-[#221e1a]/80 border-white/10' : 'bg-[#faf6f0]/80 border-black/10'}`}>
           <div draggable onDragStart={(e) => { e.dataTransfer.setData("pinType", "red"); e.dataTransfer.setData("pinIndex", "0"); }} className="cursor-grab active:cursor-grabbing"><PinIcon color="#e74c3c" /></div>
           <div className="w-full h-px bg-white/10" />
           <div draggable onDragStart={(e) => { e.dataTransfer.setData("pinType", "blue"); e.dataTransfer.setData("pinIndex", "0"); }} className="cursor-grab active:cursor-grabbing"><PinIcon color="#3498db" /></div>
@@ -90,17 +90,17 @@ export default function App() {
         </div>
 
         <div className="flex-1 perspective-distant w-full relative">
-          <div className="absolute -top-10 left-4 right-4 flex justify-evenly z-40 pointer-events-none">
-            {Array.from({ length: 28 }).map((_, i) => (
-              <div key={i} className="relative flex flex-col items-center justify-end w-3 h-18">
-                <div className="spiral-wire" />
+          <div className="absolute -top-10 left-4 right-4 flex justify-around md:justify-evenly z-40 pointer-events-none">
+            {Array.from({ length: window.innerWidth < 768 ? 16 : 30 }).map((_, i) => (
+              <div key={i} className="relative flex flex-col items-center justify-end w-2 md:w-3 h-18">
+                <div className="spiral-wire scale-75 md:scale-100" />
                 <div className="spiral-hole" />
               </div>
             ))}
           </div>
-          <div className="rounded-lg shadow-2xl relative w-full h-[480px] md:h-auto flex flex-col md:flex-row overflow-hidden"
+          <div className="rounded-lg shadow-2xl relative w-full min-h-[480px] md:h-auto flex flex-col md:flex-row overflow-hidden"
             style={{ background: darkMode ? "#221e1a" : "#faf6f0", color: darkMode ? "#f0ebe4" : "#1a1510" }}>
-            <div className="relative w-full md:w-[400px] shrink-0 h-[250px] md:h-auto overflow-hidden z-20">
+            <div className="relative w-full md:w-[350px] lg:w-[400px] shrink-0 h-[200px] md:h-auto overflow-hidden z-20">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.img key={viewMonth} initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} src={theme.img} className="absolute inset-0 w-full h-full object-cover" />
               </AnimatePresence>
