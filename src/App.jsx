@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 
 import { MONTHS, DAYS, MONTH_THEMES, INDIAN_HOLIDAYS, pageVariants, dateKey, isInRange } from "./data";
@@ -91,7 +91,7 @@ export default function App() {
 
         <div className="flex-1 perspective-distant w-full relative">
           <div className="absolute -top-10 left-4 right-4 flex justify-evenly z-40 pointer-events-none">
-            {Array.from({ length: 32 }).map((_, i) => (
+            {Array.from({ length: 28 }).map((_, i) => (
               <div key={i} className="relative flex flex-col items-center justify-end w-3 h-18">
                 <div className="spiral-wire" />
                 <div className="spiral-hole" />
